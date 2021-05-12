@@ -1,0 +1,21 @@
+@model PizzaBox.Client.Models.OrderViewModel
+<fieldset>
+  <section class="text-center">
+    <p>Welcome to PizzaBox! This is an app that allows you to customize a pizza from your favorite pizza shop!</p>
+  </section>
+  <legend>Pick A Store</legend>
+
+  <form action="/order" method="post">
+    @Html.ValidationMessageFor(s => s.SelectedStore)
+
+    @foreach (var item in Model.Stores)
+    {
+      <div class="form-check">
+        <label class="form-check-label" for="@item">@item</label>
+        <input class="form-check-input" type="radio" asp-for="SelectedStore" value="@item">
+        
+      </div>
+    }
+    <button type="submit">Select Store</button>
+  </form> 
+</fieldset>

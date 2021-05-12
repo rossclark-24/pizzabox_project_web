@@ -1,0 +1,18 @@
+<h2>Thank you for your order</h2>
+<a href="/home">home</a>
+
+<p>Store: @ViewBag.Order.Store</p>
+
+@foreach (var item in ViewBag.Order.Pizzas)
+{
+  <p>Crust: @item.Crust</p>
+  <p>Size: @item.Size</p>
+  <p>Toppings:</p>
+
+  <ul>
+  @foreach (var thing in item.Toppings)
+    {
+      <li>@thing</li>
+    }
+  </ul>
+}

@@ -1,0 +1,77 @@
+@model PizzaBox.Client.Models.OrderViewModel
+
+<form action="/order" method="post">
+  @Html.AntiForgeryToken()
+
+  <div class="row">
+    <div class="col-md-9">
+    <fieldset>
+      <legend>Crusts</legend>
+
+      @Html.ValidationMessageFor(m => m.SelectedCrust)
+
+      @foreach (var item in Model.Crusts)
+      {
+        <div class="form-check">
+          <label class="form-check-label" for="@item">@item</label>
+          <input class="form-check-input" type="radio" asp-for="SelectedCrust" value="@item">
+          
+        </div>
+      }
+    </fieldset>
+    </div>
+
+    <div class="col-md-9">
+    <fieldset>
+      <legend>Sizes</legend>
+
+      @Html.ValidationMessageFor(m => m.SelectedSize)
+
+      @foreach (var item in Model.Sizes)
+      {
+        <div class="form-check">
+          <label class="form-check-label" for="@item">@item</label>
+          <input class="form-check-input" type="radio" asp-for="SelectedSize" value="@item">
+          
+        </div>
+      }
+    </fieldset>
+    </div>
+
+
+
+    <div class="col-md-9">
+    <fieldset>
+      <legend>Toppings</legend>
+
+      @Html.ValidationMessageFor(m => m.SelectedToppings)
+
+      @foreach (var item in Model.Toppings)
+      {
+        <div class="form-check">
+          <label class="form-check-label" for="@item">@item</label>
+          <input class="form-check-input" type="checkbox" id="@item" name="selectedtoppings" value="@item">
+          
+        </div>
+      }
+    </fieldset>
+    </div>
+
+
+    <div class="col-md-9">
+    <fieldset>
+      <legend>Store</legend>
+      @Html.ValidationMessageFor(m => m.SelectedStore)
+      @foreach (var item in Model.Stores)
+      {
+        <div class="form-check">
+          <label class="form-check-label" for="@item">@item</label>
+          <input class="form-check-input" type="radio" asp-for="SelectedStore" value="@item">
+        </div>
+      }
+      </fieldset>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" style="">Make Pizza</button>
+</form>
